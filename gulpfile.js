@@ -110,4 +110,4 @@ exports.libs = libs;
 
 
 exports.build = series(cleanDist, images, build);
-exports.default = parallel(libs, scripts, styles, js, browsersync, watching);
+exports.default = parallel(libs, scripts, js, styles, browsersync, watching);
