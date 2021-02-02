@@ -14,4 +14,8 @@ $(function() {
     slidesToScroll: 1,
   });
 
+  $('.menu__btn').on('click', function(){
+    $('.menu').toggleClass('menu--active')
+  });
+
 });
