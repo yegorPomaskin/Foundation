@@ -7,6 +7,7 @@ const uglify        = require('gulp-uglify-es').default;
 const autoprefixer  = require('gulp-autoprefixer');
 const imagemin      = require('gulp-imagemin');
 const del           = require('del');
+const cssmin        = require('gulp-cssmin');
 
 
 
@@ -40,9 +41,8 @@ function images() {
     .pipe(dest('dist/images'))
 }
 
-function scripts() {
+function js() {
   return src([
-    'node_modules/jquery/dist/jquery.js',
     'app/js/main.js'
   ])
     .pipe(concat('main.min.js'))
@@ -61,6 +61,26 @@ function build() {
     .pipe(dest('dist'))
 }
 
+function scripts() {
+  return src([
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/slick-carousel/slick/slick.js'
+  ])
+      .pipe(concat('libs.min.js'))
+      .pipe(uglify())
+      .pipe(dest('app/js'))
+}
+
+function libs() {
+  return src([
+    'node_modules/normalize.css/normalize.css',
+    'node_modules/slick-carousel/slick/slick.css'
+  ])
+      .pipe(concat('libs.min.css'))
+      .pipe(cssmin())
+      .pipe(dest('app/css'))  
+}
+
 function styles() {
   return src('app/scss/style.scss')
       .pipe(scss({outputStyle: 'compressed'}))
@@ -75,16 +95,19 @@ function styles() {
 
 function watching(){
   watch(['app/scss/**/*.scss'], styles);
-  watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
+  watch(['app/js/**/*.js', '!app/js/main.min.js'], js);
   watch(['app/*.html']).on('change', browserSync.reload);
 }
 
 exports.styles = styles;
+exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
-exports.scripts = scripts;
+exports.js = js;
 exports.images = images;
 exports.cleanDist = cleanDist;
+exports.libs = libs;
+
 
 exports.build = series(cleanDist, images, build);
-exports.default = parallel(styles, scripts, browsersync, watching);
+exports.default = parallel(libs, scripts, js, styles, browsersync, watching);
