@@ -41,7 +41,7 @@
   position: relative;
 }
 .menu__btn{
-  display: block;
+  display: inline-block;
   width: 42px;
   span{
     margin-bottom: 10px;
@@ -60,6 +60,13 @@
     color: $text;
   }
 }
+.menu__list-link{
+  transition: all .3s;
+}
+.menu__list-link:hover{
+  color: $blue;
+  text-decoration: underline;
+}
 .header__link{
   height: 48px;
   margin-left: 50px;
@@ -71,6 +78,11 @@
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.10), 0 4px 6px 0 rgba(0,0,0,0.05), inset 0 1px 0 0 rgba(255,255,255,0.10);
   background: #3040C4;
   background-image: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.00) 100%);
+  transition: all .3s;
+  &:hover{
+    background: white;
+    color: $blue;
+  }
 }
 
 //end header
@@ -98,6 +110,7 @@
 .top__link,
 .top__btn{
   height: 52px;
+  transition: all .3s;
 }
 
 .top__link{
@@ -113,6 +126,10 @@
   border-radius: 2px;
   color: $blue;
   padding: 16px 28px 17px;
+  &:hover{
+    background-color: $blue;
+    color: white; 
+  }
 }
 
 //end top
@@ -135,6 +152,15 @@
   font-size: 22px;
   line-height: 32px;
   margin-bottom: 25px;
+}
+.about__link{
+  background-color: $blue;
+  border: 1px solid transparent;
+}
+.about__link:hover{
+  background-color: #FFF;
+  color: $blue;
+  border: 1px solid $blue;
 }
 
 //end about
@@ -199,6 +225,8 @@
 .features__item{
   border-bottom: 1px solid rgba(43, 41, 45, 0.15);
   transition: all .3s;
+  cursor: pointer;
+  padding: 5px;
 }
 .features__item.features__item--active{
   border-bottom: 4px solid #3142C6;
@@ -438,6 +466,10 @@
   margin-left: 10px;
   background-color: #fff;
   color: $text;
+  &:hover{
+    color: #fff;
+    background-color: $blue;
+  }
 }
 .audience__items{
   display: flex;
@@ -635,6 +667,9 @@
     font-size: 18px;
     color: $text;
   }
+}
+.trial__form-input:focus::placeholder{
+  opacity: 0.4;
 }
 .trial__form-btn{
   height: 48px;

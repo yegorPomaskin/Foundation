@@ -128,7 +128,7 @@
     text-align: center;
     margin-bottom: 30px;
     &::after{
-      left: -10%;
+      left: -15%;
       bottom: 0;
       content: '';
       position: absolute;
@@ -262,8 +262,8 @@
   .hiring__item{
     display: block;
     text-align: left;
-    padding: 19px 71px 19px 20px;
-    height: 140px;
+    padding: 19px 20px 19px 20px;
+    height: 150px;
     &::after{
       border-radius: 0 8px 8px 0;
       right: -1px;
@@ -271,11 +271,15 @@
       top: 0px;
       background-size: 7px 12px;
       width: 50px;
-      height: 138px;
+      height: 148px;
     }
     &:hover{
       background-color: white;
     }
+  }
+  .hiring__item-ocupation{
+    max-width: 270px;
+    width: 100%;
   }
   .hiring__item-title{
     margin-bottom: 7px;
@@ -294,11 +298,22 @@
   .footer__col{
     max-width: 100%;
     width: 100%;
+    display: block;
+  }
+  .footer__col.company{
+    margin-top: 40px;
   }
   .footer__menu{
     margin-bottom: 30px;
     & + .footer__menu{
-      margin-top: 40px;
+      margin-top: 65px;
+    }
+  }
+  .footer__list{
+    li{
+      &:last-child{
+        padding-bottom: 40px;
+      }
     }
   }
   .footer__social-inner{
@@ -311,6 +326,7 @@
   }
 }
 @media (max-width: 524px){
+  
   .brands__inner{
     padding: 0 0 49px;
   }
@@ -382,6 +398,11 @@
   }
 }
 @media(max-width: 481px){
+  .header__inner{
+    .logo__subtitle{
+      display: none;
+    }
+  }
   .trial__title,
   .trial__text{
     display: none;
@@ -448,12 +469,26 @@
   .features{
     display: none;
   }
+  .direction__title{
+    font-size: 38px;
+    line-height: 40px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    max-width: 300px;
+  }
 }
 @media (max-width: 410px){
   .brands__item.mashsable,
   .brands__item.forbes,
   .brands__item.nytimes{
     background-size: 90%;
+  }
+}
+@media (max-width: 380px){
+  .header__inner{
+    .logo__img{
+      margin-right: 5px;
+    }
   }
 }
 @media (max-width: 376px){
@@ -499,12 +534,23 @@
 }
 @media (min-width: 1200px){
   .features::after{
-    left: 25%;
+    max-width: 1080px;
+    left: 44%;
     top: -10px;
   }
 }
 @media (min-width: 1400px){
   .carousel__inner::after{
     right: -120px;
+  }
+}
+@media (min-width: 2000px){
+  .features::after{
+    left: 50%;
+    z-index: 1;
+    max-width: 1080px;
+  }
+  .features__items{
+    z-index: 10;
   }
 }
